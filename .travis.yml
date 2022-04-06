@@ -4,7 +4,7 @@ services:
   - docker
 before_install:
   - echo "start build!"
-  - docker build -t test -f Dockerfile.dev
+  - docker build -t test -f Dockerfile.dev ./
 script:
   - docker run -e CI=true test npm run test -- --coverage
 after_success:
