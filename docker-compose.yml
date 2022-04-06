@@ -1,20 +1,10 @@
 version: '3.7'
 services: 
-  react: &func
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+  react:
+    build: ./
+    ports: 
+      - "8080:80"
+    container_name: react
     volumes:
       - ./src:/usr/src/app/src
       - /usr/src/app/node_modules
-    stdin_open: true
-  
-  dev:
-    <<: *func
-    container_name: dev
-    ports:
-      - "3000:3000"
-  test:
-    <<: *func
-    command: npm run test
-    container_name: test
